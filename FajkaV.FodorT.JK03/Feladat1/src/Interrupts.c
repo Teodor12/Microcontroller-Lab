@@ -11,6 +11,7 @@
 
 #define LED0 P1_B4
 #define REACT_TIME 200 //200 ms time for the user's reaction
+#define DELAY_UNIT 100 //100 ms used to count up to seconds
 //-----------------------------------------------------------------------------
 // TIMER0_ISR
 //-----------------------------------------------------------------------------
@@ -19,21 +20,14 @@
 // TCON::TF0 (Timer 0 Overflow Flag)
 //
 //-----------------------------------------------------------------------------
-extern uint8_t counter;
+extern uint16_t counter;
+extern uint16_t delay_counter;
 extern volatile bit start;
 extern volatile bit stop;
 
 SI_INTERRUPT (TIMER0_ISR, TIMER0_IRQn)
 {
     TCON_TF0 = 0;
-    if(start && !stop)
-    {
-        counter++;
-        if(counter > REACT_TIME)
-        {
-            stop = 1;
-            LED0 = 0; //keep LED0 on
-        }
-    }
+    counter++;
 }
 

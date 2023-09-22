@@ -1,4 +1,4 @@
-LX51 LINKER/LOCATER V4.66.97.0                                                          09/21/2023  15:51:53  PAGE 1
+LX51 LINKER/LOCATER V4.66.97.0                                                          09/22/2023  20:24:47  PAGE 1
 
 
 LX51 LINKER/LOCATER V4.66.97.0, INVOKED BY:
@@ -35,8 +35,8 @@ C:000000H   C:000000H   C:001FFEH             ECODE
 C:000000H   C:000000H   C:001FFEH             HCONST
 X:000000H   X:000000H   X:0000FFH             XDATA
 X:000000H   X:000000H   X:0000FFH             HDATA
-C:000000H   C:000000H   C:00FFFFH   000185H   CODE
-I:000000H   I:000000H   I:00007FH   00000DH   DATA
+C:000000H   C:000000H   C:00FFFFH   000152H   CODE
+I:000000H   I:000000H   I:00007FH   00000FH   DATA
 I:000020H.0 I:000020H.0 I:00002FH.7 000000H.3 BIT
 I:000000H   I:000000H   I:0000FFH   000001H   IDATA
 
@@ -50,8 +50,8 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 * * * * * * * * * * *   D A T A   M E M O R Y   * * * * * * * * * * * * *
 000000H   000007H   000008H   ---    AT..     DATA           "REG BANK 0"
 000008H   00000BH   000004H   BYTE   UNIT     DATA           _DATA_GROUP_
-00000CH   00000CH   000001H   BYTE   UNIT     DATA           ?DT?MAIN
-00000DH.0 00001FH.7 000013H.0 ---    ---      **GAP**
+00000CH   00000EH   000003H   BYTE   UNIT     DATA           ?DT?MAIN
+00000FH.0 00001FH.7 000011H.0 ---    ---      **GAP**
 000020H.0 000020H.1 000000H.2 BIT    UNIT     BIT            ?BI?MAIN
 000020H.2 000020H.2 000000H.1 BIT    UNIT     BIT            _BIT_GROUP_
 000020H.3 000020H   000000H.5 ---    ---      **GAP**
@@ -59,23 +59,23 @@ START     STOP      LENGTH    ALIGN  RELOC    MEMORY CLASS   SEGMENT NAME
 
 * * * * * * * * * * *   C O D E   M E M O R Y   * * * * * * * * * * * * *
 000000H   000002H   000003H   ---    OFFS..   CODE           ?CO?SILABS_STARTUP?3
-000003H   00000AH   000008H   BYTE   UNIT     CODE           ?C_INITSEG
+000003H   000007H   000005H   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
+000008H   00000AH   000003H   ---    ---      **GAP**
 00000BH   00000DH   000003H   BYTE   OFFS..   CODE           ?INTERRUPTS?0000B
 00000EH   000099H   00008CH   BYTE   UNIT     CODE           ?C_C51STARTUP
 00009AH   0000E2H   000049H   BYTE   UNIT     CODE           ?PR?WDT_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
-0000E3H   000104H   000022H   BYTE   UNIT     CODE           ?PR?TIMER0_ISR?INTERRUPTS
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 2
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 2
 
 
-000105H   000121H   00001DH   BYTE   UNIT     CODE           ?PR?DELAY?MAIN
-000122H   00013BH   00001AH   BYTE   UNIT     CODE           ?PR?MAIN?MAIN
-00013CH   00014EH   000013H   BYTE   UNIT     CODE           ?PR?TIMER01_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
-00014FH   000160H   000012H   BYTE   UNIT     CODE           ?PR?ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
-000161H   000171H   000011H   BYTE   UNIT     CODE           ?C?LIB_CODE
-000172H   000178H   000007H   BYTE   UNIT     CODE           ?PR?TIMER_SETUP_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
-000179H   00017CH   000004H   BYTE   UNIT     CODE           ?PR?PBCFG_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
-00017DH   000180H   000004H   BYTE   UNIT     CODE           ?PR?INTERRUPT_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
-000181H   000184H   000004H   BYTE   UNIT     CODE           ?PR?PORTS_1_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
+0000E3H   0000FFH   00001DH   BYTE   UNIT     CODE           ?PR?TIMER0_ISR?INTERRUPTS
+000100H   000111H   000012H   BYTE   UNIT     CODE           ?PR?ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
+000112H   000122H   000011H   BYTE   UNIT     CODE           ?C?LIB_CODE
+000123H   000132H   000010H   BYTE   UNIT     CODE           ?PR?TIMER01_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
+000133H   00013EH   00000CH   BYTE   UNIT     CODE           ?C_INITSEG
+00013FH   000148H   00000AH   BYTE   UNIT     CODE           ?PR?TIMER_SETUP_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
+000149H   00014CH   000004H   BYTE   UNIT     CODE           ?PR?PBCFG_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
+00014DH   000150H   000004H   BYTE   UNIT     CODE           ?PR?INTERRUPT_0_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
+000151H   000154H   000004H   BYTE   UNIT     CODE           ?PR?PORTS_1_ENTER_DEFAULTMODE_FROM_RESET?INITDEVICE
 
 * * * * * * * * *   R E M O V E D     S E G M E N T S   * * * * * * * *
    *DEL*:           000001H   BYTE   UNIT     CODE           ?PR?SILABS_STARTUP?MAIN
@@ -98,7 +98,6 @@ TIMER0_ISR/INTERRUPTS                         ----- -----  ----- -----
 
 MAIN/MAIN                                     ----- -----  ----- -----
   +--> ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE
-  +--> DELAY/MAIN
 
 ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE       ----- -----  ----- -----
   +--> WDT_0_ENTER_DEFAULTMODE_FROM_RESET/INITDEVICE
@@ -126,13 +125,11 @@ TIMER_SETUP_0_ENTER_DEFAULTMODE_FROM_RES+     ----- -----  ----- -----
 INTERRUPT_0_ENTER_DEFAULTMODE_FROM_RESET+     ----- -----  ----- -----
 ... /INITDEVICE
 
-DELAY/MAIN                                    ----- -----  ----- -----
-
 ?C_INITSEG                                    ----- -----  ----- -----
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 3
 
 
 
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 3
 
 
 PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
@@ -141,7 +138,7 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       VALUE       CLASS    TYPE      PUBLIC SYMBOL NAME
       =================================================
       00000000H   NUMBER   ---       ?C?CODESEG
-      01000161H   CODE     ---       ?C?ULCMP
+      01000112H   CODE     ---       ?C?ULCMP
       00000000H   NUMBER   ---       ?C?XDATASEG
       01000055H   CODE     ---       ?C_START
       01000000H   CODE     NEAR LAB  ?C_STARTUP
@@ -194,18 +191,18 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 0000009FH   DATA     BYTE      CMP0MX
 *SFR* 000000BFH   DATA     BYTE      CMP1CN0
 *SFR* 000000ABH   DATA     BYTE      CMP1MD
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 4
-
-
 *SFR* 000000AAH   DATA     BYTE      CMP1MX
-      0000000CH   DATA     BYTE      counter
+      0000000CH   DATA     WORD      counter
 *SFR* 000000D2H   DATA     BYTE      CRC0AUTO
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 4
+
+
 *SFR* 000000CEH   DATA     BYTE      CRC0CN0
 *SFR* 000000D3H   DATA     BYTE      CRC0CNT
 *SFR* 000000DEH   DATA     BYTE      CRC0DAT
 *SFR* 000000CFH   DATA     BYTE      CRC0FLIP
 *SFR* 000000DDH   DATA     BYTE      CRC0IN
-      01000105H   CODE     ---       Delay
+      0000000EH   DATA     BYTE      delay_counter
 *SFR* 000000ADH   DATA     BYTE      DERIVID
 *SFR* 000000B5H   DATA     BYTE      DEVICEID
 *SFR* 00000082H   DATA     WORD      DP
@@ -213,7 +210,7 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 00000082H   DATA     BYTE      DPL
 *SFR* 000000E6H   DATA     BYTE      EIE1
 *SFR* 000000F3H   DATA     BYTE      EIP1
-      0100014FH   CODE     ---       enter_DefaultMode_from_RESET
+      01000100H   CODE     ---       enter_DefaultMode_from_RESET
 *SFR* 000000B7H   DATA     BYTE      FLKEY
 *SFR* 000000C7H   DATA     BYTE      HFO0CAL
 *SFR* 000000A8H   DATA     BYTE      IE
@@ -225,7 +222,7 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 000000A8H.5 DATA     BIT       IE_ET2
 *SFR* 000000A8H.0 DATA     BIT       IE_EX0
 *SFR* 000000A8H.2 DATA     BIT       IE_EX1
-      0100017DH   CODE     ---       INTERRUPT_0_enter_DefaultMode_from_RESET
+      0100014DH   CODE     ---       INTERRUPT_0_enter_DefaultMode_from_RESET
 *SFR* 000000B8H   DATA     BYTE      IP
 *SFR* 000000B8H.4 DATA     BIT       IP_PS0
 *SFR* 000000B8H.6 DATA     BIT       IP_PSPI0
@@ -236,7 +233,7 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 000000B8H.2 DATA     BIT       IP_PX1
 *SFR* 000000E4H   DATA     BYTE      IT01CF
 *SFR* 000000B1H   DATA     BYTE      LFO0CN
-      01000122H   CODE     ---       main
+      01000003H   CODE     ---       main
 *SFR* 00000080H   DATA     BYTE      P0
 *SFR* 00000080H.0 DATA     BIT       P0_B0
 *SFR* 00000080H.1 DATA     BIT       P0_B1
@@ -259,12 +256,12 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 00000090H.4 DATA     BIT       P1_B4
 *SFR* 00000090H.5 DATA     BIT       P1_B5
 *SFR* 00000090H.6 DATA     BIT       P1_B6
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 5
-
-
 *SFR* 00000090H.7 DATA     BIT       P1_B7
 *SFR* 000000EEH   DATA     BYTE      P1MASK
 *SFR* 000000EDH   DATA     BYTE      P1MAT
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 5
+
+
 *SFR* 000000F2H   DATA     BYTE      P1MDIN
 *SFR* 000000A5H   DATA     BYTE      P1MDOUT
 *SFR* 000000D5H   DATA     BYTE      P1SKIP
@@ -272,7 +269,7 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 000000A0H.0 DATA     BIT       P2_B0
 *SFR* 000000A0H.1 DATA     BIT       P2_B1
 *SFR* 000000A6H   DATA     BYTE      P2MDOUT
-      01000179H   CODE     ---       PBCFG_0_enter_DefaultMode_from_RESET
+      01000149H   CODE     ---       PBCFG_0_enter_DefaultMode_from_RESET
 *SFR* 000000F9H   DATA     WORD      PCA0
 *SFR* 0000009EH   DATA     BYTE      PCA0CENT
 *SFR* 0000009CH   DATA     BYTE      PCA0CLR
@@ -300,7 +297,7 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 00000096H   DATA     BYTE      PCA0POL
 *SFR* 000000F7H   DATA     BYTE      PCA0PWM
 *SFR* 00000087H   DATA     BYTE      PCON0
-      01000181H   CODE     ---       PORTS_1_enter_DefaultMode_from_RESET
+      01000151H   CODE     ---       PORTS_1_enter_DefaultMode_from_RESET
 *SFR* 000000A0H   DATA     BYTE      PPAGE_SFR
 *SFR* 000000F6H   DATA     BYTE      PRTDRV
 *SFR* 0000008FH   DATA     BYTE      PSCTL
@@ -324,12 +321,12 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 00000098H.4 DATA     BIT       SCON0_REN
 *SFR* 00000098H.0 DATA     BIT       SCON0_RI
 *SFR* 00000098H.7 DATA     BIT       SCON0_SMODE
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 6
-
-
 *SFR* 00000098H.3 DATA     BIT       SCON0_TB8
 *SFR* 00000098H.1 DATA     BIT       SCON0_TI
 *DEL*:00000000H   CODE     ---       SiLabs_Startup
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 6
+
+
 *SFR* 000000D6H   DATA     BYTE      SMB0ADM
 *SFR* 000000D7H   DATA     BYTE      SMB0ADR
 *SFR* 000000C1H   DATA     BYTE      SMB0CF
@@ -370,9 +367,9 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 00000088H.6 DATA     BIT       TCON_TR1
 *SFR* 0000008CH   DATA     BYTE      TH0
 *SFR* 0000008DH   DATA     BYTE      TH1
-      0100013CH   CODE     ---       TIMER01_0_enter_DefaultMode_from_RESET
+      01000123H   CODE     ---       TIMER01_0_enter_DefaultMode_from_RESET
       010000E3H   CODE     ---       TIMER0_ISR
-      01000172H   CODE     ---       TIMER_SETUP_0_enter_DefaultMode_from_RESET
+      0100013FH   CODE     ---       TIMER_SETUP_0_enter_DefaultMode_from_RESET
 *SFR* 0000008AH   DATA     BYTE      TL0
 *SFR* 0000008BH   DATA     BYTE      TL1
 *SFR* 00000089H   DATA     BYTE      TMOD
@@ -389,12 +386,12 @@ PUBLIC SYMBOLS OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
 *SFR* 000000CCH   DATA     BYTE      TMR2L
 *SFR* 000000CAH   DATA     WORD      TMR2RL
 *SFR* 000000CBH   DATA     BYTE      TMR2RLH
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 7
-
-
 *SFR* 000000CAH   DATA     BYTE      TMR2RLL
 *SFR* 00000094H   DATA     WORD      TMR3
 *SFR* 00000091H   DATA     BYTE      TMR3CN0
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 7
+
+
 *SFR* 00000095H   DATA     BYTE      TMR3H
 *SFR* 00000094H   DATA     BYTE      TMR3L
 *SFR* 00000092H   DATA     WORD      TMR3RL
@@ -414,13 +411,13 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       VALUE       REP       CLASS    TYPE      SYMBOL NAME
       ====================================================
       ---         MODULE    ---      ---       INITDEVICE
-      01000181H   PUBLIC    CODE     ---       PORTS_1_enter_DefaultMode_from_RESET
-      0100017DH   PUBLIC    CODE     ---       INTERRUPT_0_enter_DefaultMode_from_RESET
-      0100013CH   PUBLIC    CODE     ---       TIMER01_0_enter_DefaultMode_from_RESET
-      01000172H   PUBLIC    CODE     ---       TIMER_SETUP_0_enter_DefaultMode_from_RESET
+      01000151H   PUBLIC    CODE     ---       PORTS_1_enter_DefaultMode_from_RESET
+      0100014DH   PUBLIC    CODE     ---       INTERRUPT_0_enter_DefaultMode_from_RESET
+      01000123H   PUBLIC    CODE     ---       TIMER01_0_enter_DefaultMode_from_RESET
+      0100013FH   PUBLIC    CODE     ---       TIMER_SETUP_0_enter_DefaultMode_from_RESET
       0100009AH   PUBLIC    CODE     ---       WDT_0_enter_DefaultMode_from_RESET
-      01000179H   PUBLIC    CODE     ---       PBCFG_0_enter_DefaultMode_from_RESET
-      0100014FH   PUBLIC    CODE     ---       enter_DefaultMode_from_RESET
+      01000149H   PUBLIC    CODE     ---       PBCFG_0_enter_DefaultMode_from_RESET
+      01000100H   PUBLIC    CODE     ---       enter_DefaultMode_from_RESET
       000000A2H   SFRSYM    DATA     BYTE      SPI0CKR
       00000080H   SFRSYM    DATA     BYTE      P0
       000000D0H.2 SFRSYM    DATA     BIT       PSW_OV
@@ -454,12 +451,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000F0H.0 SFRSYM    DATA     BIT       B_B0
       00000082H   SFRSYM    DATA     WORD      DP
       000000ECH   SFRSYM    DATA     BYTE      PCA0CPH2
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 8
-
-
       000000F0H.1 SFRSYM    DATA     BIT       B_B1
       000000C3H   SFRSYM    DATA     WORD      ADC0GT
       000000F0H.2 SFRSYM    DATA     BIT       B_B2
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 8
+
+
       000000FBH   SFRSYM    DATA     BYTE      PCA0CPL0
       000000F0H.3 SFRSYM    DATA     BIT       B_B3
       000000D9H   SFRSYM    DATA     BYTE      PCA0MD
@@ -519,12 +516,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000F8H.4 SFRSYM    DATA     BIT       SPI0CN0_RXOVRN
       000000D0H.4 SFRSYM    DATA     BIT       PSW_RS1
       000000E8H.7 SFRSYM    DATA     BIT       ADC0CN0_ADEN
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 9
-
-
       00000089H   SFRSYM    DATA     BYTE      TMOD
       00000088H   SFRSYM    DATA     BYTE      TCON
       000000CFH   SFRSYM    DATA     BYTE      CRC0FLIP
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 9
+
+
       000000D0H.0 SFRSYM    DATA     BIT       PSW_PARITY
       000000A8H.4 SFRSYM    DATA     BIT       IE_ES0
       0000009FH   SFRSYM    DATA     BYTE      CMP0MX
@@ -584,12 +581,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000080H.2 SFRSYM    DATA     BIT       P0_B2
       000000BFH   SFRSYM    DATA     BYTE      CMP1CN0
       00000088H.3 SFRSYM    DATA     BIT       TCON_IE1
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 10
-
-
       000000A0H.1 SFRSYM    DATA     BIT       P2_B1
       00000090H.2 SFRSYM    DATA     BIT       P1_B2
       00000080H.3 SFRSYM    DATA     BIT       P0_B3
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 10
+
+
       000000C0H   SFRSYM    DATA     BYTE      SMB0CN0
       00000090H.3 SFRSYM    DATA     BIT       P1_B3
       00000080H.4 SFRSYM    DATA     BIT       P0_B4
@@ -649,12 +646,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000096H   SFRSYM    DATA     BYTE      PCA0POL
       000000CCH   SFRSYM    DATA     BYTE      TMR2L
       000000F8H.7 SFRSYM    DATA     BIT       SPI0CN0_SPIF
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 11
-
-
       00000094H   SFRSYM    DATA     BYTE      TMR3L
       000000DFH   SFRSYM    DATA     BYTE      ADC0PWR
       000000A8H.7 SFRSYM    DATA     BIT       IE_EA
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 11
+
+
       000000C8H.5 SFRSYM    DATA     BIT       TMR2CN0_TF2LEN
       000000F8H.6 SFRSYM    DATA     BIT       SPI0CN0_WCOL
       000000F8H.2 SFRSYM    DATA     BIT       SPI0CN0_NSSMD0
@@ -668,22 +665,22 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
       000000B3H   SFRSYM    DATA     BYTE      ADC0AC
 
-      0100014FH   BLOCK     CODE     ---       LVL=0
-      0100014FH   LINE      CODE     ---       #23
-      0100014FH   LINE      CODE     ---       #24
-      0100014FH   LINE      CODE     ---       #26
-      01000152H   LINE      CODE     ---       #27
-      01000155H   LINE      CODE     ---       #28
-      01000158H   LINE      CODE     ---       #29
-      0100015BH   LINE      CODE     ---       #30
-      0100015EH   LINE      CODE     ---       #31
+      01000100H   BLOCK     CODE     ---       LVL=0
+      01000100H   LINE      CODE     ---       #23
+      01000100H   LINE      CODE     ---       #24
+      01000100H   LINE      CODE     ---       #26
+      01000103H   LINE      CODE     ---       #27
+      01000106H   LINE      CODE     ---       #28
+      01000109H   LINE      CODE     ---       #29
+      0100010CH   LINE      CODE     ---       #30
+      0100010FH   LINE      CODE     ---       #31
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000179H   BLOCK     CODE     ---       LVL=0
-      01000179H   LINE      CODE     ---       #37
-      01000179H   LINE      CODE     ---       #38
-      01000179H   LINE      CODE     ---       #44
-      0100017CH   LINE      CODE     ---       #56
+      01000149H   BLOCK     CODE     ---       LVL=0
+      01000149H   LINE      CODE     ---       #37
+      01000149H   LINE      CODE     ---       #38
+      01000149H   LINE      CODE     ---       #44
+      0100014CH   LINE      CODE     ---       #56
       ---         BLOCKEND  ---      ---       LVL=0
 
       0100009AH   BLOCK     CODE     ---       LVL=0
@@ -706,42 +703,42 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       010000E2H   LINE      CODE     ---       #90
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000172H   BLOCK     CODE     ---       LVL=0
-      01000172H   LINE      CODE     ---       #93
-      01000172H   LINE      CODE     ---       #94
-      01000172H   LINE      CODE     ---       #107
-      01000175H   LINE      CODE     ---       #115
-      01000178H   LINE      CODE     ---       #118
+      0100013FH   BLOCK     CODE     ---       LVL=0
+      0100013FH   LINE      CODE     ---       #93
+      0100013FH   LINE      CODE     ---       #94
+      0100013FH   LINE      CODE     ---       #105
+      01000142H   LINE      CODE     ---       #120
+      01000145H   LINE      CODE     ---       #128
+      01000148H   LINE      CODE     ---       #131
       ---         BLOCKEND  ---      ---       LVL=0
 
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 12
+      01000123H   BLOCK     CODE     ---       LVL=0
+      01000123H   BLOCK     CODE     NEAR LAB  LVL=1
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 12
 
 
-      0100013CH   BLOCK     CODE     ---       LVL=0
-      0100013CH   BLOCK     CODE     NEAR LAB  LVL=1
       00000007H   SYMBOL    DATA     BYTE      TCON_save
       ---         BLOCKEND  ---      ---       LVL=1
-      0100013CH   LINE      CODE     ---       #121
-      0100013CH   LINE      CODE     ---       #122
-      0100013CH   LINE      CODE     ---       #126
-      0100013EH   LINE      CODE     ---       #128
-      01000141H   LINE      CODE     ---       #136
-      01000144H   LINE      CODE     ---       #150
-      0100014EH   LINE      CODE     ---       #154
+      01000123H   LINE      CODE     ---       #134
+      01000123H   LINE      CODE     ---       #135
+      01000123H   LINE      CODE     ---       #139
+      01000125H   LINE      CODE     ---       #141
+      01000128H   LINE      CODE     ---       #159
+      01000132H   LINE      CODE     ---       #163
       ---         BLOCKEND  ---      ---       LVL=0
 
-      0100017DH   BLOCK     CODE     ---       LVL=0
-      0100017DH   LINE      CODE     ---       #157
-      0100017DH   LINE      CODE     ---       #158
-      0100017DH   LINE      CODE     ---       #176
-      01000180H   LINE      CODE     ---       #184
+      0100014DH   BLOCK     CODE     ---       LVL=0
+      0100014DH   LINE      CODE     ---       #166
+      0100014DH   LINE      CODE     ---       #167
+      0100014DH   LINE      CODE     ---       #185
+      01000150H   LINE      CODE     ---       #193
       ---         BLOCKEND  ---      ---       LVL=0
 
-      01000181H   BLOCK     CODE     ---       LVL=0
-      01000181H   LINE      CODE     ---       #187
-      01000181H   LINE      CODE     ---       #188
-      01000181H   LINE      CODE     ---       #203
-      01000184H   LINE      CODE     ---       #221
+      01000151H   BLOCK     CODE     ---       LVL=0
+      01000151H   LINE      CODE     ---       #196
+      01000151H   LINE      CODE     ---       #197
+      01000151H   LINE      CODE     ---       #212
+      01000154H   LINE      CODE     ---       #230
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       INTERRUPTS
@@ -779,12 +776,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000F0H.0 SFRSYM    DATA     BIT       B_B0
       00000082H   SFRSYM    DATA     WORD      DP
       000000ECH   SFRSYM    DATA     BYTE      PCA0CPH2
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 13
-
-
       000000F0H.1 SFRSYM    DATA     BIT       B_B1
       000000C3H   SFRSYM    DATA     WORD      ADC0GT
       000000F0H.2 SFRSYM    DATA     BIT       B_B2
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 13
+
+
       000000FBH   SFRSYM    DATA     BYTE      PCA0CPL0
       000000F0H.3 SFRSYM    DATA     BIT       B_B3
       000000D9H   SFRSYM    DATA     BYTE      PCA0MD
@@ -844,12 +841,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000F8H.4 SFRSYM    DATA     BIT       SPI0CN0_RXOVRN
       000000D0H.4 SFRSYM    DATA     BIT       PSW_RS1
       000000E8H.7 SFRSYM    DATA     BIT       ADC0CN0_ADEN
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 14
-
-
       00000089H   SFRSYM    DATA     BYTE      TMOD
       00000088H   SFRSYM    DATA     BYTE      TCON
       000000CFH   SFRSYM    DATA     BYTE      CRC0FLIP
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 14
+
+
       000000D0H.0 SFRSYM    DATA     BIT       PSW_PARITY
       000000A8H.4 SFRSYM    DATA     BIT       IE_ES0
       0000009FH   SFRSYM    DATA     BYTE      CMP0MX
@@ -909,12 +906,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000080H.2 SFRSYM    DATA     BIT       P0_B2
       000000BFH   SFRSYM    DATA     BYTE      CMP1CN0
       00000088H.3 SFRSYM    DATA     BIT       TCON_IE1
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 15
-
-
       000000A0H.1 SFRSYM    DATA     BIT       P2_B1
       00000090H.2 SFRSYM    DATA     BIT       P1_B2
       00000080H.3 SFRSYM    DATA     BIT       P0_B3
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 15
+
+
       000000C0H   SFRSYM    DATA     BYTE      SMB0CN0
       00000090H.3 SFRSYM    DATA     BIT       P1_B3
       00000080H.4 SFRSYM    DATA     BIT       P0_B4
@@ -974,12 +971,12 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000096H   SFRSYM    DATA     BYTE      PCA0POL
       000000CCH   SFRSYM    DATA     BYTE      TMR2L
       000000F8H.7 SFRSYM    DATA     BIT       SPI0CN0_SPIF
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 16
-
-
       00000094H   SFRSYM    DATA     BYTE      TMR3L
       000000DFH   SFRSYM    DATA     BYTE      ADC0PWR
       000000A8H.7 SFRSYM    DATA     BIT       IE_EA
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 16
+
+
       000000C8H.5 SFRSYM    DATA     BIT       TMR2CN0_TF2LEN
       000000F8H.6 SFRSYM    DATA     BIT       SPI0CN0_WCOL
       000000F8H.2 SFRSYM    DATA     BIT       SPI0CN0_NSSMD0
@@ -994,26 +991,21 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000B3H   SFRSYM    DATA     BYTE      ADC0AC
 
       010000E3H   BLOCK     CODE     ---       LVL=0
-      010000E3H   LINE      CODE     ---       #26
-      010000E7H   LINE      CODE     ---       #28
-      010000E9H   LINE      CODE     ---       #29
-      010000EFH   LINE      CODE     ---       #30
-      010000EFH   LINE      CODE     ---       #31
+      010000E3H   LINE      CODE     ---       #28
+      010000E7H   LINE      CODE     ---       #30
+      010000E9H   LINE      CODE     ---       #31
       010000F1H   LINE      CODE     ---       #32
-      010000FCH   LINE      CODE     ---       #33
-      010000FCH   LINE      CODE     ---       #34
-      010000FEH   LINE      CODE     ---       #35
-      01000100H   LINE      CODE     ---       #36
-      01000100H   LINE      CODE     ---       #37
-      01000100H   LINE      CODE     ---       #38
+      010000F9H   LINE      CODE     ---       #33
+      010000FBH   LINE      CODE     ---       #34
+      010000FBH   LINE      CODE     ---       #35
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       MAIN
+      0000000EH   PUBLIC    DATA     BYTE      delay_counter
       00000020H.1 PUBLIC    BIT      BIT       stop
       00000020H.0 PUBLIC    BIT      BIT       start
-      0000000CH   PUBLIC    DATA     BYTE      counter
-      01000122H   PUBLIC    CODE     ---       main
-      01000105H   PUBLIC    CODE     ---       Delay
+      0000000CH   PUBLIC    DATA     WORD      counter
+      01000003H   PUBLIC    CODE     ---       main
       000000A2H   SFRSYM    DATA     BYTE      SPI0CKR
       00000080H   SFRSYM    DATA     BYTE      P0
       000000D0H.2 SFRSYM    DATA     BIT       PSW_OV
@@ -1039,9 +1031,6 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000093H   SFRSYM    DATA     BYTE      TMR3RLH
       000000F3H   SFRSYM    DATA     BYTE      EIP1
       00000098H.2 SFRSYM    DATA     BIT       SCON0_RB8
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 17
-
-
       000000CAH   SFRSYM    DATA     BYTE      TMR2RLL
       000000FCH   SFRSYM    DATA     BYTE      PCA0CPH0
       00000092H   SFRSYM    DATA     BYTE      TMR3RLL
@@ -1050,6 +1039,9 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000F0H.0 SFRSYM    DATA     BIT       B_B0
       00000082H   SFRSYM    DATA     WORD      DP
       000000ECH   SFRSYM    DATA     BYTE      PCA0CPH2
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 17
+
+
       000000F0H.1 SFRSYM    DATA     BIT       B_B1
       000000C3H   SFRSYM    DATA     WORD      ADC0GT
       000000F0H.2 SFRSYM    DATA     BIT       B_B2
@@ -1104,9 +1096,6 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000ACH   SFRSYM    DATA     BYTE      SMB0TC
       000000F2H   SFRSYM    DATA     BYTE      P1MDIN
       000000C0H.4 SFRSYM    DATA     BIT       SMB0CN0_STO
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 18
-
-
       000000FEH   SFRSYM    DATA     BYTE      P0MASK
       000000EEH   SFRSYM    DATA     BYTE      P1MASK
       000000D0H.3 SFRSYM    DATA     BIT       PSW_RS0
@@ -1115,6 +1104,9 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000F8H.4 SFRSYM    DATA     BIT       SPI0CN0_RXOVRN
       000000D0H.4 SFRSYM    DATA     BIT       PSW_RS1
       000000E8H.7 SFRSYM    DATA     BIT       ADC0CN0_ADEN
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 18
+
+
       00000089H   SFRSYM    DATA     BYTE      TMOD
       00000088H   SFRSYM    DATA     BYTE      TCON
       000000CFH   SFRSYM    DATA     BYTE      CRC0FLIP
@@ -1169,9 +1161,6 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000B8H.0 SFRSYM    DATA     BIT       IP_PX0
       00000090H.0 SFRSYM    DATA     BIT       P1_B0
       00000080H.1 SFRSYM    DATA     BIT       P0_B1
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 19
-
-
       000000B8H.2 SFRSYM    DATA     BIT       IP_PX1
       0000009BH   SFRSYM    DATA     BYTE      CMP0CN0
       00000088H.1 SFRSYM    DATA     BIT       TCON_IE0
@@ -1180,6 +1169,9 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000080H.2 SFRSYM    DATA     BIT       P0_B2
       000000BFH   SFRSYM    DATA     BYTE      CMP1CN0
       00000088H.3 SFRSYM    DATA     BIT       TCON_IE1
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 19
+
+
       000000A0H.1 SFRSYM    DATA     BIT       P2_B1
       00000090H.2 SFRSYM    DATA     BIT       P1_B2
       00000080H.3 SFRSYM    DATA     BIT       P0_B3
@@ -1234,9 +1226,6 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000088H.4 SFRSYM    DATA     BIT       TCON_TR0
       000000C8H.4 SFRSYM    DATA     BIT       TMR2CN0_TF2CEN
       00000088H.6 SFRSYM    DATA     BIT       TCON_TR1
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 20
-
-
       000000C2H   SFRSYM    DATA     BYTE      SMB0DAT
       000000CDH   SFRSYM    DATA     BYTE      TMR2H
       000000A1H   SFRSYM    DATA     BYTE      SPI0CFG
@@ -1245,6 +1234,9 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       00000096H   SFRSYM    DATA     BYTE      PCA0POL
       000000CCH   SFRSYM    DATA     BYTE      TMR2L
       000000F8H.7 SFRSYM    DATA     BIT       SPI0CN0_SPIF
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 20
+
+
       00000094H   SFRSYM    DATA     BYTE      TMR3L
       000000DFH   SFRSYM    DATA     BYTE      ADC0PWR
       000000A8H.7 SFRSYM    DATA     BIT       IE_EA
@@ -1261,47 +1253,19 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       000000B7H   SFRSYM    DATA     BYTE      FLKEY
       000000B3H   SFRSYM    DATA     BYTE      ADC0AC
 
-      01000105H   BLOCK     CODE     ---       LVL=0
-      01000105H   BLOCK     CODE     NEAR LAB  LVL=1
-      00000006H   SYMBOL    DATA     WORD      i
-      00000004H   SYMBOL    DATA     WORD      j
-      ---         BLOCKEND  ---      ---       LVL=1
-      01000105H   LINE      CODE     ---       #33
-      01000105H   LINE      CODE     ---       #35
-      01000108H   LINE      CODE     ---       #36
-      01000116H   LINE      CODE     ---       #37
-      01000121H   LINE      CODE     ---       #39
-      ---         BLOCKEND  ---      ---       LVL=0
-
-      01000122H   BLOCK     CODE     ---       LVL=0
-      01000122H   LINE      CODE     ---       #50
-      01000122H   LINE      CODE     ---       #51
-      01000122H   LINE      CODE     ---       #53
-      01000125H   LINE      CODE     ---       #54
-      01000128H   LINE      CODE     ---       #55
-      0100012AH   LINE      CODE     ---       #56
-      0100012CH   LINE      CODE     ---       #57
-      0100012CH   LINE      CODE     ---       #58
-      0100012CH   LINE      CODE     ---       #59
-      0100012FH   LINE      CODE     ---       #60
-      0100012FH   LINE      CODE     ---       #61
-      01000131H   LINE      CODE     ---       #62
-      01000134H   LINE      CODE     ---       #63
-      01000134H   LINE      CODE     ---       #64
-      01000136H   LINE      CODE     ---       #65
-      01000138H   LINE      CODE     ---       #66
-      01000138H   LINE      CODE     ---       #67
-      0100013AH   LINE      CODE     ---       #68
-      0100013AH   LINE      CODE     ---       #70
+      01000003H   BLOCK     CODE     ---       LVL=0
+      01000003H   LINE      CODE     ---       #44
+      01000003H   LINE      CODE     ---       #45
+      01000003H   LINE      CODE     ---       #47
+      01000006H   LINE      CODE     ---       #48
+      01000006H   LINE      CODE     ---       #49
+      01000006H   LINE      CODE     ---       #51
       ---         BLOCKEND  ---      ---       LVL=0
 
       ---         MODULE    ---      ---       ?C_STARTUP
       01000000H   PUBLIC    CODE     NEAR LAB  ?C_STARTUP
       000000E0H   SFRSYM    DATA     BYTE      ACC
       000000F0H   SFRSYM    DATA     BYTE      B
-LX51 LINKER/LOCATER V4.66.97.0                                                        09/21/2023  15:51:53  PAGE 21
-
-
       00000083H   SFRSYM    DATA     BYTE      DPH
       00000082H   SFRSYM    DATA     BYTE      DPL
       000000A0H   SFRSYM    DATA     BYTE      PPAGE_SFR
@@ -1335,11 +1299,14 @@ SYMBOL TABLE OF MODULE:  FELADAT1.OMF.CRBUILD (INITDEVICE)
       01000017H   LINE      CODE     ---       #201
       ---         BLOCKEND  ---      ---       LVL=0
 
+LX51 LINKER/LOCATER V4.66.97.0                                                        09/22/2023  20:24:47  PAGE 21
+
+
       ---         MODULE    ---      ---       ?C_INIT
       01000055H   PUBLIC    CODE     ---       ?C_START
 
       ---         MODULE    ---      ---       ?C?ULCMP
-      01000161H   PUBLIC    CODE     ---       ?C?ULCMP
+      01000112H   PUBLIC    CODE     ---       ?C?ULCMP
 
-Program Size: data=14.3 xdata=0 const=0 code=389
+Program Size: data=16.3 xdata=0 const=0 code=338
 LX51 RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

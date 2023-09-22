@@ -35,7 +35,7 @@ void SiLabs_Startup (void)
 }
 
 void Delay(uint8_t pause){
-   while(counter < pause); //wait for 2 seconds
+   while(counter < pause); 
    counter = 0;
 }
 

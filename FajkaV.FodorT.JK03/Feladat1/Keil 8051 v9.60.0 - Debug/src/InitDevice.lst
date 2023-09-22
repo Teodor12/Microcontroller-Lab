@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/21/2023 13:02:40 PAGE 1   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2023 20:24:45 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE INITDEVICE
@@ -63,7 +63,7 @@ line level    source
   49   1      
   50   1        // $[XBR0 - Port I/O Crossbar 0]
   51   1        // [XBR0 - Port I/O Crossbar 0]$
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/21/2023 13:02:40 PAGE 2   
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2023 20:24:45 PAGE 2   
 
   52   1      
   53   1        // $[XBR1 - Port I/O Crossbar 1]
@@ -109,137 +109,146 @@ line level    source
   93          TIMER_SETUP_0_enter_DefaultMode_from_RESET (void)
   94          {
   95   1        // $[CKCON0 - Clock Control 0]
-  96   1        // [CKCON0 - Clock Control 0]$
-  97   1      
-  98   1        // $[TMOD - Timer 0/1 Mode]
-  99   1        /***********************************************************************
- 100   1         - Mode 2, 8-bit Counter/Timer with Auto-Reload
- 101   1         - Mode 0, 13-bit Counter/Timer
- 102   1         - Timer Mode
- 103   1         - Timer 0 enabled when TR0 = 1 irrespective of INT0 logic level
- 104   1         - Timer Mode
- 105   1         - Timer 1 enabled when TR1 = 1 irrespective of INT1 logic level
- 106   1         ***********************************************************************/
- 107   1        TMOD = TMOD_T0M__MODE2 | TMOD_T1M__MODE0 | TMOD_CT0__TIMER
- 108   1            | TMOD_GATE0__DISABLED | TMOD_CT1__TIMER | TMOD_GATE1__DISABLED;
- 109   1        // [TMOD - Timer 0/1 Mode]$
+  96   1        /***********************************************************************
+  97   1         - System clock divided by 4
+  98   1         - Counter/Timer 0 uses the clock defined by the prescale field, SCA
+  99   1         - Timer 2 high byte uses the clock defined by T2XCLK in TMR2CN0
+ 100   1         - Timer 2 low byte uses the clock defined by T2XCLK in TMR2CN0
+ 101   1         - Timer 3 high byte uses the clock defined by T3XCLK in TMR3CN0
+ 102   1         - Timer 3 low byte uses the clock defined by T3XCLK in TMR3CN0
+ 103   1         - Timer 1 uses the clock defined by the prescale field, SCA
+ 104   1         ***********************************************************************/
+ 105   1        CKCON0 = CKCON0_SCA__SYSCLK_DIV_4 | CKCON0_T0M__PRESCALE
+ 106   1            | CKCON0_T2MH__EXTERNAL_CLOCK | CKCON0_T2ML__EXTERNAL_CLOCK
+ 107   1            | CKCON0_T3MH__EXTERNAL_CLOCK | CKCON0_T3ML__EXTERNAL_CLOCK
+ 108   1            | CKCON0_T1M__PRESCALE;
+ 109   1        // [CKCON0 - Clock Control 0]$
  110   1      
- 111   1        // $[TCON - Timer 0/1 Control]
+ 111   1        // $[TMOD - Timer 0/1 Mode]
  112   1        /***********************************************************************
- 113   1         - Start Timer 0 running
- 114   1         ***********************************************************************/
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/21/2023 13:02:40 PAGE 3   
+ 113   1         - Mode 2, 8-bit Counter/Timer with Auto-Reload
+ 114   1         - Mode 0, 13-bit Counter/Timer
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2023 20:24:45 PAGE 3   
 
- 115   1        TCON |= TCON_TR0__RUN;
- 116   1        // [TCON - Timer 0/1 Control]$
- 117   1      
- 118   1      }
- 119          
- 120          extern void
- 121          TIMER01_0_enter_DefaultMode_from_RESET (void)
- 122          {
- 123   1        // $[Timer Initialization]
- 124   1        //Save Timer Configuration
- 125   1        uint8_t TCON_save;
- 126   1        TCON_save = TCON;
- 127   1        //Stop Timers
- 128   1        TCON &= ~TCON_TR0__BMASK & ~TCON_TR1__BMASK;
- 129   1      
- 130   1        // [Timer Initialization]$
- 131   1      
- 132   1        // $[TH0 - Timer 0 High Byte]
- 133   1        /***********************************************************************
- 134   1         - Timer 0 High Byte = 0x01
- 135   1         ***********************************************************************/
- 136   1        TH0 = (0x01 << TH0_TH0__SHIFT);
- 137   1        // [TH0 - Timer 0 High Byte]$
- 138   1      
- 139   1        // $[TL0 - Timer 0 Low Byte]
- 140   1        // [TL0 - Timer 0 Low Byte]$
- 141   1      
- 142   1        // $[TH1 - Timer 1 High Byte]
- 143   1        // [TH1 - Timer 1 High Byte]$
+ 115   1         - Timer Mode
+ 116   1         - Timer 0 enabled when TR0 = 1 irrespective of INT0 logic level
+ 117   1         - Timer Mode
+ 118   1         - Timer 1 enabled when TR1 = 1 irrespective of INT1 logic level
+ 119   1         ***********************************************************************/
+ 120   1        TMOD = TMOD_T0M__MODE2 | TMOD_T1M__MODE0 | TMOD_CT0__TIMER
+ 121   1            | TMOD_GATE0__DISABLED | TMOD_CT1__TIMER | TMOD_GATE1__DISABLED;
+ 122   1        // [TMOD - Timer 0/1 Mode]$
+ 123   1      
+ 124   1        // $[TCON - Timer 0/1 Control]
+ 125   1        /***********************************************************************
+ 126   1         - Start Timer 0 running
+ 127   1         ***********************************************************************/
+ 128   1        TCON |= TCON_TR0__RUN;
+ 129   1        // [TCON - Timer 0/1 Control]$
+ 130   1      
+ 131   1      }
+ 132          
+ 133          extern void
+ 134          TIMER01_0_enter_DefaultMode_from_RESET (void)
+ 135          {
+ 136   1        // $[Timer Initialization]
+ 137   1        //Save Timer Configuration
+ 138   1        uint8_t TCON_save;
+ 139   1        TCON_save = TCON;
+ 140   1        //Stop Timers
+ 141   1        TCON &= ~TCON_TR0__BMASK & ~TCON_TR1__BMASK;
+ 142   1      
+ 143   1        // [Timer Initialization]$
  144   1      
- 145   1        // $[TL1 - Timer 1 Low Byte]
- 146   1        // [TL1 - Timer 1 Low Byte]$
+ 145   1        // $[TH0 - Timer 0 High Byte]
+ 146   1        // [TH0 - Timer 0 High Byte]$
  147   1      
- 148   1        // $[Timer Restoration]
- 149   1        //Restore Timer Configuration
- 150   1        TCON |= (TCON_save & TCON_TR0__BMASK) | (TCON_save & TCON_TR1__BMASK);
- 151   1      
- 152   1        // [Timer Restoration]$
+ 148   1        // $[TL0 - Timer 0 Low Byte]
+ 149   1        // [TL0 - Timer 0 Low Byte]$
+ 150   1      
+ 151   1        // $[TH1 - Timer 1 High Byte]
+ 152   1        // [TH1 - Timer 1 High Byte]$
  153   1      
- 154   1      }
- 155          
- 156          extern void
- 157          INTERRUPT_0_enter_DefaultMode_from_RESET (void)
- 158          {
- 159   1        // $[EIE1 - Extended Interrupt Enable 1]
- 160   1        // [EIE1 - Extended Interrupt Enable 1]$
- 161   1      
- 162   1        // $[EIP1 - Extended Interrupt Priority 1]
- 163   1        // [EIP1 - Extended Interrupt Priority 1]$
- 164   1      
- 165   1        // $[IE - Interrupt Enable]
- 166   1        /***********************************************************************
- 167   1         - Enable each interrupt according to its individual mask setting
- 168   1         - Disable external interrupt 0
- 169   1         - Disable external interrupt 1
- 170   1         - Disable all SPI0 interrupts
- 171   1         - Enable interrupt requests generated by the TF0 flag
- 172   1         - Disable all Timer 1 interrupt
- 173   1         - Disable Timer 2 interrupt
- 174   1         - Disable UART0 interrupt
- 175   1         ***********************************************************************/
- 176   1        IE = IE_EA__ENABLED | IE_EX0__DISABLED | IE_EX1__DISABLED | IE_ESPI0__DISABLED
- 177   1            | IE_ET0__ENABLED | IE_ET1__DISABLED | IE_ET2__DISABLED
-C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/21/2023 13:02:40 PAGE 4   
+ 154   1        // $[TL1 - Timer 1 Low Byte]
+ 155   1        // [TL1 - Timer 1 Low Byte]$
+ 156   1      
+ 157   1        // $[Timer Restoration]
+ 158   1        //Restore Timer Configuration
+ 159   1        TCON |= (TCON_save & TCON_TR0__BMASK) | (TCON_save & TCON_TR1__BMASK);
+ 160   1      
+ 161   1        // [Timer Restoration]$
+ 162   1      
+ 163   1      }
+ 164          
+ 165          extern void
+ 166          INTERRUPT_0_enter_DefaultMode_from_RESET (void)
+ 167          {
+ 168   1        // $[EIE1 - Extended Interrupt Enable 1]
+ 169   1        // [EIE1 - Extended Interrupt Enable 1]$
+ 170   1      
+ 171   1        // $[EIP1 - Extended Interrupt Priority 1]
+ 172   1        // [EIP1 - Extended Interrupt Priority 1]$
+ 173   1      
+ 174   1        // $[IE - Interrupt Enable]
+ 175   1        /***********************************************************************
+ 176   1         - Enable each interrupt according to its individual mask setting
+ 177   1         - Disable external interrupt 0
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2023 20:24:45 PAGE 4   
 
- 178   1            | IE_ES0__DISABLED;
- 179   1        // [IE - Interrupt Enable]$
- 180   1      
- 181   1        // $[IP - Interrupt Priority]
- 182   1        // [IP - Interrupt Priority]$
- 183   1      
- 184   1      }
- 185          
- 186          extern void
- 187          PORTS_1_enter_DefaultMode_from_RESET (void)
- 188          {
- 189   1        // $[P1 - Port 1 Pin Latch]
- 190   1        // [P1 - Port 1 Pin Latch]$
- 191   1      
- 192   1        // $[P1MDOUT - Port 1 Output Mode]
- 193   1        /***********************************************************************
- 194   1         - P1.0 output is open-drain
- 195   1         - P1.1 output is open-drain
- 196   1         - P1.2 output is open-drain
- 197   1         - P1.3 output is open-drain
- 198   1         - P1.4 output is push-pull
- 199   1         - P1.5 output is open-drain
- 200   1         - P1.6 output is open-drain
- 201   1         - P1.7 output is open-drain
- 202   1         ***********************************************************************/
- 203   1        P1MDOUT = P1MDOUT_B0__OPEN_DRAIN | P1MDOUT_B1__OPEN_DRAIN
- 204   1            | P1MDOUT_B2__OPEN_DRAIN | P1MDOUT_B3__OPEN_DRAIN | P1MDOUT_B4__PUSH_PULL
- 205   1            | P1MDOUT_B5__OPEN_DRAIN | P1MDOUT_B6__OPEN_DRAIN
- 206   1            | P1MDOUT_B7__OPEN_DRAIN;
- 207   1        // [P1MDOUT - Port 1 Output Mode]$
- 208   1      
- 209   1        // $[P1MDIN - Port 1 Input Mode]
- 210   1        // [P1MDIN - Port 1 Input Mode]$
- 211   1      
- 212   1        // $[P1SKIP - Port 1 Skip]
- 213   1        // [P1SKIP - Port 1 Skip]$
- 214   1      
- 215   1        // $[P1MASK - Port 1 Mask]
- 216   1        // [P1MASK - Port 1 Mask]$
+ 178   1         - Disable external interrupt 1
+ 179   1         - Disable all SPI0 interrupts
+ 180   1         - Enable interrupt requests generated by the TF0 flag
+ 181   1         - Disable all Timer 1 interrupt
+ 182   1         - Disable Timer 2 interrupt
+ 183   1         - Disable UART0 interrupt
+ 184   1         ***********************************************************************/
+ 185   1        IE = IE_EA__ENABLED | IE_EX0__DISABLED | IE_EX1__DISABLED | IE_ESPI0__DISABLED
+ 186   1            | IE_ET0__ENABLED | IE_ET1__DISABLED | IE_ET2__DISABLED
+ 187   1            | IE_ES0__DISABLED;
+ 188   1        // [IE - Interrupt Enable]$
+ 189   1      
+ 190   1        // $[IP - Interrupt Priority]
+ 191   1        // [IP - Interrupt Priority]$
+ 192   1      
+ 193   1      }
+ 194          
+ 195          extern void
+ 196          PORTS_1_enter_DefaultMode_from_RESET (void)
+ 197          {
+ 198   1        // $[P1 - Port 1 Pin Latch]
+ 199   1        // [P1 - Port 1 Pin Latch]$
+ 200   1      
+ 201   1        // $[P1MDOUT - Port 1 Output Mode]
+ 202   1        /***********************************************************************
+ 203   1         - P1.0 output is open-drain
+ 204   1         - P1.1 output is open-drain
+ 205   1         - P1.2 output is open-drain
+ 206   1         - P1.3 output is open-drain
+ 207   1         - P1.4 output is push-pull
+ 208   1         - P1.5 output is open-drain
+ 209   1         - P1.6 output is open-drain
+ 210   1         - P1.7 output is open-drain
+ 211   1         ***********************************************************************/
+ 212   1        P1MDOUT = P1MDOUT_B0__OPEN_DRAIN | P1MDOUT_B1__OPEN_DRAIN
+ 213   1            | P1MDOUT_B2__OPEN_DRAIN | P1MDOUT_B3__OPEN_DRAIN | P1MDOUT_B4__PUSH_PULL
+ 214   1            | P1MDOUT_B5__OPEN_DRAIN | P1MDOUT_B6__OPEN_DRAIN
+ 215   1            | P1MDOUT_B7__OPEN_DRAIN;
+ 216   1        // [P1MDOUT - Port 1 Output Mode]$
  217   1      
- 218   1        // $[P1MAT - Port 1 Match]
- 219   1        // [P1MAT - Port 1 Match]$
+ 218   1        // $[P1MDIN - Port 1 Input Mode]
+ 219   1        // [P1MDIN - Port 1 Input Mode]$
  220   1      
- 221   1      }
- 222          
+ 221   1        // $[P1SKIP - Port 1 Skip]
+ 222   1        // [P1SKIP - Port 1 Skip]$
+ 223   1      
+ 224   1        // $[P1MASK - Port 1 Mask]
+ 225   1        // [P1MASK - Port 1 Mask]$
+ 226   1      
+ 227   1        // $[P1MAT - Port 1 Match]
+ 228   1        // [P1MAT - Port 1 Match]$
+ 229   1      
+ 230   1      }
+ 231          
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
@@ -249,6 +258,8 @@ MODULE INFORMATION:   STATIC OVERLAYABLE
    PDATA SIZE       =   ----    ----
    DATA SIZE        =   ----       4
    IDATA SIZE       =   ----    ----
+C51 COMPILER V9.60.0.0   INITDEVICE                                                        09/22/2023 20:24:45 PAGE 5   
+
    BIT SIZE         =   ----       1
    EDATA SIZE       =   ----    ----
    HDATA SIZE       =   ----    ----

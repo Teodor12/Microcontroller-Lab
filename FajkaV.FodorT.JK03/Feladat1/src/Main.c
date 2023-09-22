@@ -16,6 +16,7 @@
 
 #define LED0 P1_B4
 #define BTN0 P0_B2
+#define DELAY 150
 //-----------------------------------------------------------------------------
 // SiLabs_Startup() Routine
 // ----------------------------------------------------------------------------
@@ -25,18 +26,11 @@
 // and may trigger before main() in some instances.
 //-----------------------------------------------------------------------------
 
-volatile uint8_t counter = 0U; //using 16 bit value, in case of 8 bytes 256 is the max value
+volatile uint16_t counter = 0U;
+volatile uint8_t delay_counter = 0U;
 volatile bit start = 0;
-volatile bit stop = 0;
+volatile bit stop = 1;
 
-//simple software delay
-void Delay(){
-    uint16_t i, j;
-    for (i = 0; i < 1000; i++){
-       for (j = 0; j < 500; j++);
-    }
-
-}
 
 void SiLabs_Startup (void)
 {
@@ -51,23 +45,10 @@ int main (void)
 {
   // Call hardware initialization routine
   enter_DefaultMode_from_RESET();
-  Delay(); //delay
-  LED0 = 0; //turn on LED0
-  start = 1;
   while (1) 
   {
-      if(!stop) //if the passed time is smaller than 200ms
-      {
-          IE_EA = 0; //enter critical section
-          if (BTN0 == 0) //if the button is pressed in time
-          {
-              LED0 = 1; //turn off the LED0
-              stop = 1; //stop the game
-          }
-          IE_EA = 1; //leave critical section
-      }
 
-   }
+  }
 
  }
 
